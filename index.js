@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 //const router = require('./routers/playersRouter')
 const router = require('./routers/secondRouter')
+require('dotenv').config()
 
 const app = express()
 // middleware
@@ -10,7 +11,7 @@ app.use(express.json())
 app.use('/api', router)
 
 mongoose.connect(
-    `mongodb+srv://muyi:IAoIqazOvNLbNF2f@cluster0.in9uh.mongodb.net/Players_Record`,
+    process.env.DB_CONNECTION,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
