@@ -58,7 +58,7 @@ router.patch('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const playerToUpdate = await playerSchema.findByIdAndUpdate(
         { _id: req.params.id },
-        { $set: { name: req.body.name, age: req.body.age, uclChampion: req.body.uclChampion } },
+        req.body,
         { upsert: true }
     )
     try {
